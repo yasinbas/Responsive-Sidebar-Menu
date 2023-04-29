@@ -60,6 +60,12 @@ body.dark{
     width: 250px;
     padding: 10 px 14 px;
     background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close{
+    width: 88px;
 }
 
 /* ============ Resuable CSS ============ */
@@ -68,12 +74,19 @@ body.dark{
     font-size: 20px;
     font-weight: 500;
     color: var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 1;
 }
 
 .sidebar .image {
     min-width: 60 px;
     display: flex;
     align-items: center;
+}
+
+.sidebar.close .text{
+    opacity: 0;
 }
 
 
@@ -116,6 +129,14 @@ body.dark{
     background-color: var(--sidebar-color);
 }
 
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    background-color: var(--text-color);
+}
+
+
+
 .sidebar .image-text img {
     width: 40px;
     border-radius: 6px;
@@ -152,7 +173,7 @@ header .image-text .header-text{
     position: absolute;
     top: 50%px;
     right: -25px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(180deg);
     height: 25px;
     width: 25px;
     background-color: var(--primary-color);
@@ -162,12 +183,28 @@ header .image-text .header-text{
     border-radius: 50%;
     color: var(--sidebar-color);
     font-size: 22px;
+    transition: var(--tran-03);
 }
 
 
 .sidebar .search-box{
     background: var(--primary-color-light);
+    border-radius: 8px;
 }
+
+
+body.dark .sidebar header .toggle {
+
+    color:var(--text-color);
+}
+
+
+.sidebar.close header .toggle {
+
+    transform: translateY(-50%);
+
+}
+
 
 .search-box input{
     height: 100%;
@@ -198,6 +235,8 @@ header .image-text .header-text{
 }
 
 .menu-bar .mode{
+    position: relative;
+    border-radius: 6px;
     background: var(--primary-color-light);
 }
 
@@ -211,19 +250,33 @@ header .image-text .header-text{
 
 .menu-bar .mode i{
     position: absolute;
+    transition: var(--tran-03);
 }
 
 .menu-bar .mode i.sun{
     opacity: 0;
 }
 
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+
+
 .menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     min-width: 60px;
-        cursor: pointer;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-light);
 
 }
 
@@ -252,4 +305,29 @@ header .image-text .header-text{
 
 body.dark .switch::before{
     left: 24px;
+}
+
+
+
+.home{
+    position: relative;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+
+
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 50px;
+}
+
+.sidebar.close ~ .home {
+    left: 88px;
+    width: calc(100% - 88px);
 }
